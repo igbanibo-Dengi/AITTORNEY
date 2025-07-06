@@ -31,46 +31,47 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center">
       {/* Background image with overlay */}
       <div className="absolute inset-0">
-        <img 
-          src="/lovable-uploads/afae4f7d-01f9-41ce-9f8d-c1b101106650.png" 
-          alt="Background" 
+        <img
+          src="/lovable-uploads/bg-image.png"
+          alt="Background"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-background/80" />
       </div>
-      
+
       {/* Hero content */}
       <div className="relative z-10 container mx-auto px-6 text-center py-32">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight max-w-4xl mx-auto">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 leading-tight max-w-4xl mx-auto">
           Legal Docs for Startups & SMEs,<br />
-          <span className="text-primary">Drafted by AI in Minutes</span>
+          <span className="">Drafted by AI in Minutes</span>
         </h1>
-        
-        <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
+
+        <p>Join us on this visionary expedition into the heart of AI.</p>
+
+        <p className="text-lg md:text-xl font-semibold mb-12 max-w-3xl mx-auto">
           Get startup-friendly contracts, SAFE notes, and compliance docs—AI-generated,<br />
           lawyer-reviewed, at 80% lower cost.
         </p>
-        
+
         {/* Email signup form */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-lg mx-auto mb-6">
-          <Input 
-            type="email" 
+        <div className="relative flex flex-col sm:flex-row items-center justify-center gap-3 max-w-lg mx-auto mb-6">
+          <Input
+            type="email"
             placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="flex-1 h-12 bg-background/50 border-border text-foreground placeholder:text-muted-foreground backdrop-blur-sm"
           />
-          <Button 
+          <Button
             onClick={handleGetStarted}
             className="h-12 bg-primary hover:bg-primary/90 text-primary-foreground px-8 whitespace-nowrap font-medium"
           >
-            Get Started
+            Join Waitlist
           </Button>
+          <p className="text-sm text-muted-foreground  absolute -bottom-10 left-0">
+            First 50 Get Free Dock Review
+          </p>
         </div>
-        
-        <p className="text-sm text-muted-foreground">
-          First 30-Day Free Lock Review
-        </p>
       </div>
 
       {/* Signup Dialog */}
@@ -87,7 +88,7 @@ const HeroSection = () => {
               Get 30% Off Now
             </div>
           </DialogHeader>
-          
+
           <div className="space-y-4 mt-6">
             <div className="grid grid-cols-2 gap-3">
               <div>
@@ -95,7 +96,7 @@ const HeroSection = () => {
                 <Input
                   placeholder="Full Legal Name"
                   value={formData.firstName}
-                  onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                   className="bg-muted border-border text-foreground h-10"
                 />
               </div>
@@ -104,12 +105,12 @@ const HeroSection = () => {
                 <Input
                   placeholder="Company Legal Name"
                   value={formData.companyName}
-                  onChange={(e) => setFormData({...formData, companyName: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
                   className="bg-muted border-border text-foreground h-10"
                 />
               </div>
             </div>
-            
+
             <div>
               <label className="text-xs text-muted-foreground mb-1 block">Email*</label>
               <Input
@@ -119,10 +120,10 @@ const HeroSection = () => {
                 className="bg-muted border-border text-foreground h-10"
               />
             </div>
-            
+
             <div>
               <label className="text-xs text-muted-foreground mb-1 block">Company Stage</label>
-              <Select value={formData.companyStage} onValueChange={(value) => setFormData({...formData, companyStage: value})}>
+              <Select value={formData.companyStage} onValueChange={(value) => setFormData({ ...formData, companyStage: value })}>
                 <SelectTrigger className="bg-muted border-border text-foreground h-10">
                   <SelectValue placeholder="Pre-Seed/Series-Seed (Raise-5)" />
                 </SelectTrigger>
@@ -135,10 +136,10 @@ const HeroSection = () => {
                 </SelectContent>
               </Select>
             </div>
-            
+
             <div>
               <label className="text-xs text-muted-foreground mb-1 block">What do need help with?</label>
-              <Select value={formData.needHelp} onValueChange={(value) => setFormData({...formData, needHelp: value})}>
+              <Select value={formData.needHelp} onValueChange={(value) => setFormData({ ...formData, needHelp: value })}>
                 <SelectTrigger className="bg-muted border-border text-foreground h-10">
                   <SelectValue placeholder="I need help with..." />
                 </SelectTrigger>
@@ -151,8 +152,8 @@ const HeroSection = () => {
                 </SelectContent>
               </Select>
             </div>
-            
-            <Button 
+
+            <Button
               onClick={handleSubmit}
               className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-12 font-medium mt-6"
             >
