@@ -24,8 +24,9 @@ const formSchema = z.object({
     .string()
     .min(2, "Please describe your company stage")
     .max(100, "Company stage description is too long"),
-  fundingStage: z.string().min(1, "Please select your funding stage"),
+  helpTopic: z.string().min(1, "Please select a topic"),
 })
+
 
 type FormData = z.infer<typeof formSchema>
 
@@ -40,7 +41,7 @@ const CTASection = () => {
       companyName: "",
       email: "",
       companyStage: "",
-      fundingStage: "",
+      helpTopic: "",
     },
   })
 
@@ -71,21 +72,20 @@ const CTASection = () => {
           className="border-b"
         />
         <div className="container mx-auto py-12">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="bg-green-50 border border-green-200 rounded-lg p-8">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="max-w-2xl mx-auto text-center bg-[#1A1A1A]">
+            <div className="border rounded-lg p-8">
+              <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-green-800 mb-2">You're on the list!</h3>
-              <p className="text-green-700 mb-4">
+              <h3 className="text-xl font-semibold  mb-2">You're on the list!</h3>
+              <p className=" mb-4">
                 We'll notify you as soon as we launch. Get ready to save thousands on legal fees!
               </p>
               <Button
                 onClick={() => setIsSubmitted(false)}
                 variant="outline"
-                className="border-green-300 text-green-700 hover:bg-green-50"
               >
                 Submit Another Response
               </Button>
@@ -169,34 +169,10 @@ const CTASection = () => {
 
               <FormField
                 control={form.control}
-                name="fundingStage"
+                name="companyStage"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Company Stage</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                      <FormControl>
-                        <SelectTrigger className="bg-muted border-border text-foreground">
-                          <SelectValue placeholder="Select your Company stage" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent className="bg-popover border-border">
-                        <SelectItem value="MVP development">MVP development</SelectItem>
-                        <SelectItem value="Product-market fit">Product-market fit</SelectItem>
-                        <SelectItem value="Scaling">Scaling</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="fundingStage"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Funding Stage</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger className="bg-muted border-border text-foreground">
@@ -209,6 +185,31 @@ const CTASection = () => {
                         <SelectItem value="series-a">Series A</SelectItem>
                         <SelectItem value="series-b">Series B+</SelectItem>
                         <SelectItem value="bootstrapped">Bootstrapped</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="helpTopic"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>What do need help with?</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger className="bg-muted border-border text-foreground">
+                          <SelectValue placeholder="I need help with..." />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent className="bg-popover border-border">
+                        <SelectItem value="contracts">Contracts</SelectItem>
+                        <SelectItem value="safe-notes">SAFE Notes</SelectItem>
+                        <SelectItem value="compliance">Compliance</SelectItem>
+                        <SelectItem value="incorporation">Incorporation</SelectItem>
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>

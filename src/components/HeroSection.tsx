@@ -76,20 +76,20 @@ const HeroSection = () => {
 
       {/* Signup Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="sm:max-w-md bg-card border-border">
-          <DialogHeader className="text-center space-y-3">
-            <div className="text-xs text-muted-foreground uppercase tracking-wide">
+        <DialogContent className="sm:max-w-4xl bg-card border-border p-0 overflow-y-auto">
+          <DialogHeader className="text-center space-y-3 bg-[#1A1A1A] p-6">
+            <div className="text-white text-[11px] p-2 bg-[#333333] rounded-md w-fit mx-auto font-medium tracking-wide capitalize">
               Join the Future of StartUp Law
             </div>
-            <DialogTitle className="text-xl font-bold text-foreground">
+            <DialogTitle className="text-2xl text-center font-bold text-foreground">
               500+ startups trusted us pre-launch – claim your spot!
             </DialogTitle>
-            <div className="text-primary text-lg font-semibold">
+            <div className="text-primary text-center text-3xl font-semibold">
               Get 30% Off Now
             </div>
           </DialogHeader>
 
-          <div className="space-y-4 mt-6">
+          <div className="space-y-4 mt-6 pb-6 max-w-2xl mx-auto w-full">
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="text-xs text-muted-foreground mb-1 block">Name*</label>
