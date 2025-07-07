@@ -1,73 +1,266 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+"use client"
+
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import SectionHeader from "./section-header"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import * as z from "zod"
+import { useState } from "react"
+
+const formSchema = z.object({
+  fullName: z
+    .string()
+    .min(2, "Full name must be at least 2 characters")
+    .max(50, "Full name must be less than 50 characters"),
+  companyName: z
+    .string()
+    .min(2, "Company name must be at least 2 characters")
+    .max(100, "Company name must be less than 100 characters"),
+  email: z.string().email("Please enter a valid email address").min(1, "Email is required"),
+  companyStage: z
+    .string()
+    .min(2, "Please describe your company stage")
+    .max(100, "Company stage description is too long"),
+  fundingStage: z.string().min(1, "Please select your funding stage"),
+})
+
+type FormData = z.infer<typeof formSchema>
 
 const CTASection = () => {
-  return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <p className="text-muted-foreground mb-4">
-            Join the future of Startup Law!
-          </p>
-          <h2 className="text-4xl font-bold text-foreground mb-4">
-            500+ startups trusted us pre-launch – claim your spot!
-          </h2>
-          <h3 className="text-2xl font-bold text-primary mb-12">
-            Get 30% Off Now
-          </h3>
-        </div>
-        
-        <div className="max-w-md mx-auto">
-          <form className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <Input 
-                placeholder="Full name"
-                className="bg-muted border-border text-foreground placeholder:text-muted-foreground"
-              />
-              <Input 
-                placeholder="Company Name"
-                className="bg-muted border-border text-foreground placeholder:text-muted-foreground"
-              />
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const form = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      fullName: "",
+      companyName: "",
+      email: "",
+      companyStage: "",
+      fundingStage: "",
+    },
+  })
+
+  const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true)
+
+    try {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 2000))
+
+      console.log("Form submitted:", data)
+      setIsSubmitted(true)
+      form.reset()
+    } catch (error) {
+      console.error("Submission error:", error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  if (isSubmitted) {
+    return (
+      <section className="bg-background">
+        <SectionHeader
+          title="Welcome to the Future of Startup Law!"
+          subtitle="Thank you for joining our waitlist"
+          position="center"
+          className="border-b"
+        />
+        <div className="container mx-auto py-12">
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="bg-green-50 border border-green-200 rounded-lg p-8">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-green-800 mb-2">You're on the list!</h3>
+              <p className="text-green-700 mb-4">
+                We'll notify you as soon as we launch. Get ready to save thousands on legal fees!
+              </p>
+              <Button
+                onClick={() => setIsSubmitted(false)}
+                variant="outline"
+                className="border-green-300 text-green-700 hover:bg-green-50"
+              >
+                Submit Another Response
+              </Button>
             </div>
-            
-            <Input 
-              type="email"
-              placeholder="Email"
-              className="bg-muted border-border text-foreground placeholder:text-muted-foreground"
-            />
-            
-            <Input 
-              placeholder="Company Stage"
-              className="bg-muted border-border text-foreground placeholder:text-muted-foreground"
-            />
-            
-            <Select>
-              <SelectTrigger className="bg-muted border-border text-foreground">
-                <SelectValue placeholder="Pre-seed/Seed/Series A" />
-              </SelectTrigger>
-              <SelectContent className="bg-popover border-border">
-                <SelectItem value="pre-seed">Pre-seed</SelectItem>
-                <SelectItem value="seed">Seed</SelectItem>
-                <SelectItem value="series-a">Series A</SelectItem>
-                <SelectItem value="series-b">Series B+</SelectItem>
-              </SelectContent>
-            </Select>
-            
-            <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3">
-              Join Waitlist
-            </Button>
-          </form>
-          
-          <div className="flex items-center justify-center space-x-4 mt-8 text-sm text-muted-foreground">
-            <span>Terms & Conditions</span>
-            <span>•</span>
-            <span>Privacy Policy</span>
           </div>
+        </div>
+      </section>
+    )
+  }
+
+  return (
+    <section className="bg-background">
+      <SectionHeader
+        title="500+ startups trusted us pre-launch – claim your spot!"
+        subtitle="Join the Future of Startup Law"
+        subtext="Get 30% Off Now"
+        position="center"
+        className="border-b"
+      />
+
+      <div className="container mx-auto py-12">
+        <div className="max-w-2xl mx-auto">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="fullName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Full Name</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Enter your full name"
+                          className="bg-muted border-border text-foreground placeholder:text-muted-foreground"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="companyName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Company Name</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Enter your company name"
+                          className="bg-muted border-border text-foreground placeholder:text-muted-foreground"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email Address</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="email"
+                        placeholder="Enter your email address"
+                        className="bg-muted border-border text-foreground placeholder:text-muted-foreground"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="fundingStage"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Company Stage</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger className="bg-muted border-border text-foreground">
+                          <SelectValue placeholder="Select your Company stage" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent className="bg-popover border-border">
+                        <SelectItem value="MVP development">MVP development</SelectItem>
+                        <SelectItem value="Product-market fit">Product-market fit</SelectItem>
+                        <SelectItem value="Scaling">Scaling</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="fundingStage"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Funding Stage</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger className="bg-muted border-border text-foreground">
+                          <SelectValue placeholder="Select your funding stage" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent className="bg-popover border-border">
+                        <SelectItem value="pre-seed">Pre-seed</SelectItem>
+                        <SelectItem value="seed">Seed</SelectItem>
+                        <SelectItem value="series-a">Series A</SelectItem>
+                        <SelectItem value="series-b">Series B+</SelectItem>
+                        <SelectItem value="bootstrapped">Bootstrapped</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <Button
+                type="submit"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 text-lg font-medium"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <>
+                    <svg
+                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    Joining Waitlist...
+                  </>
+                ) : (
+                  "Join Waitlist"
+                )}
+              </Button>
+
+              <p className="text-xs text-muted-foreground text-center">
+                By joining our waitlist, you agree to receive updates about Aittorney. We respect your privacy and won't
+                spam you.
+              </p>
+            </form>
+          </Form>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default CTASection;
+export default CTASection

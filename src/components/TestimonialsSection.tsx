@@ -1,10 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import SectionHeader from "./section-header";
 
 const TestimonialsSection = () => {
   const testimonials = [
     {
-      name: "Mark H.",
+      name: "Mark R.",
       role: "Founder, Stealth (YC S23)",
       content: "Aittorney saved our SAFE note in 20 minutes—instead of 5 days our $1K lawyer quoted. The AI-generated custom terms and sent to investors.",
       avatar: "/lovable-uploads/470ed967-686c-44df-bffd-d4f8cd933390.png",
@@ -27,22 +28,20 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <p className="text-muted-foreground mb-4">
-            500+ startups saved $1.3M+ in legal band-spend!
-          </p>
-          <h2 className="text-4xl font-bold text-foreground">
-            What Is Said About Aittorney
-          </h2>
-        </div>
-        
+    <section className="border-b">
+      <SectionHeader
+        title="What Is Said About AIttorney"
+        subtitle="500+ startups saved $3.8M+ in legal fees last quarter"
+        position="left"
+        className="border-b"
+      />
+
+      <div className="container max-w-6xl mx-auto">
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="bg-card border-border">
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-4 mb-4">
+            <div key={index} className=" xl:py-12 xl:border-r xl:last:border-r-0">
+              <div className="p-6">
+                <div className="flex items-center space-x-4 mb-6 mx-auto w-fit">
                   <Avatar className="w-12 h-12">
                     <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
                     <AvatarFallback className="bg-primary text-primary-foreground">
@@ -54,11 +53,11 @@ const TestimonialsSection = () => {
                     <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                   </div>
                 </div>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-sm leading-relaxed bg-card p-4 border rounded-md">
                   {testimonial.content}
                 </p>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
       </div>

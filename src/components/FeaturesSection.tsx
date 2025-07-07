@@ -1,7 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import SectionHeader from "./section-header";
-import { Separator } from "./ui/separator";
 
 const FeaturesSection = () => {
   return (
@@ -12,7 +11,7 @@ const FeaturesSection = () => {
         position="left"
       />
       <div className="mx-auto border-y py-10 xl:py-0">
-        <div className="flex flex-col xl:flex-row items-center gap-16 relative h-full container max-w-[1200px]">
+        <div className="flex flex-col xl:flex-row items-center gap-16 relative h-full container max-w-6xl">
           <div className="xl:w-1/3 h-full">
             <div className="h-full xl:min-h-[360px] flex flex-col gap-4 items-center xl:items-start justify-center xl:border-r">
               <div className="h-12 w-12">

@@ -1,4 +1,5 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import SectionHeader from "./section-header";
 
 const FAQSection = () => {
   const faqs = [
@@ -26,46 +27,48 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <p className="text-muted-foreground mb-4">
-            Here are some frequently asked questions:
-          </p>
-          <h2 className="text-4xl font-bold text-foreground">
-            Everything You Need To Know
-          </h2>
-        </div>
-        
-        <div className="max-w-3xl mx-auto">
+    <section className="">
+      <SectionHeader
+        title="Everything You Need To know"
+        subtitle="Here are some frequently asked questions"
+        position="center"
+        className="border-b"
+      />
+
+      <div className="container mx-auto px-6 py-12">
+        <div className="max-w-5xl mx-auto">
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
-              <AccordionItem 
-                key={index} 
+              <AccordionItem
+                key={index}
                 value={`item-${index}`}
-                className="border border-border rounded-lg bg-card"
+                className="last:border-b-0"
               >
                 <AccordionTrigger className="px-6 py-4 text-left text-foreground hover:no-underline">
                   <div className="flex items-center space-x-4">
-                    <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-primary-foreground text-sm font-bold">A</span>
-                    </div>
-                    <span className="font-medium">{faq.question}</span>
+                    <span className="text-primary text-sm font-bold">Q.</span>
+                    <span className="font-medium text-sm md:text-base text-primary">{faq.question}</span>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="px-6 pb-4">
-                  <div className="pl-12">
+                  <div className="">
                     {faq.answer && (
-                      <p className="text-muted-foreground mb-4">{faq.answer}</p>
+                      <span className="flex gap-4">
+                        <span className="text-sm font-bold">A:</span>
+                        <p className="text-muted-foreground mb-4">{faq.answer}</p>
+                      </span>
                     )}
                     {faq.answers && (
-                      <div className="space-y-2">
-                        {faq.answers.map((answer, answerIndex) => (
-                          <p key={answerIndex} className="text-muted-foreground">
-                            {answer}
-                          </p>
-                        ))}
-                      </div>
+                      <span className="flex gap-4">
+                        <span className="text-sm font-bold">A:</span>
+                        <div className="space-y-2">
+                          {faq.answers.map((answer, answerIndex) => (
+                            <p key={answerIndex} className="text-muted-foreground">
+                              {answer}
+                            </p>
+                          ))}
+                        </div>
+                      </span>
                     )}
                   </div>
                 </AccordionContent>
