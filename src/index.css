@@ -37,19 +37,23 @@ All colors MUST be HSL.
     --ring: 217 91% 60%;
 
     /* AI Startup specific tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(217 91% 60% / 0.1), hsl(217 91% 60% / 0.05));
-    --grid-pattern: repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 98px,
-      hsl(0 0% 20% / 0.3) 100px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 98px,
-      hsl(0 0% 20% / 0.3) 100px
+    --hero-gradient: linear-gradient(
+      135deg,
+      hsl(217 91% 60% / 0.1),
+      hsl(217 91% 60% / 0.05)
     );
+    --grid-pattern: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 98px,
+        hsl(0 0% 20% / 0.3) 100px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 98px,
+        hsl(0 0% 20% / 0.3) 100px
+      );
 
     --radius: 0.5rem;
 

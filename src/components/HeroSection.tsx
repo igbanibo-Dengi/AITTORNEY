@@ -28,7 +28,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center">
+    <section className="relative min-h-screen flex items-center justify-center border-b">
       {/* Background image with overlay */}
       <div className="absolute inset-0">
         <img
@@ -41,12 +41,12 @@ const HeroSection = () => {
 
       {/* Hero content */}
       <div className="relative z-10 container mx-auto px-6 text-center py-32">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 leading-tight max-w-4xl mx-auto">
+        <h1 className="text-4xl md:text-5xl lg:text-5xl text-foreground mb-6 leading-tight max-w-4xl mx-auto mt-16">
           Legal Docs for Startups & SMEs,<br />
           <span className="">Drafted by AI in Minutes</span>
         </h1>
 
-        <p>Join us on this visionary expedition into the heart of AI.</p>
+        <p className="pb-4">Join us on this visionary expedition into the heart of AI.</p>
 
         <p className="text-lg md:text-xl font-semibold mb-12 max-w-3xl mx-auto">
           Get startup-friendly contracts, SAFE notes, and compliance docs—AI-generated,<br />
@@ -68,7 +68,7 @@ const HeroSection = () => {
           >
             Join Waitlist
           </Button>
-          <p className="text-sm text-muted-foreground  absolute -bottom-10 left-0">
+          <p className="text-xs text-muted-foreground  absolute -bottom-5 left-0">
             First 50 Get Free Dock Review
           </p>
         </div>

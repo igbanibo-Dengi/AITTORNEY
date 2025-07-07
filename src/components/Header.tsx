@@ -1,38 +1,76 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Menu } from "lucide-react"
 
 const Header = () => {
   return (
-    <header className="sticky top-0 left-0 right-0 z-50">
-      <div className="container mx-auto px-6 py-4 bg-red-400 w-[70%]">
+    <header className="fixed top-6 left-0 right-0 z-50">
+      <div className="container mx-auto px-12 py-4 w-[90%] xl:w-[70%] bg-background/60 backdrop-blur-sm border border-border/50 rounded-full">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-8">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">A</span>
-              </div>
-              <span className="text-xl font-semibold text-foreground">AITTORNEY</span>
-            </div>
-
-            <nav className="hidden md:flex items-center space-x-8">
-              <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">
-                How It Works
-              </a>
-              <a href="#resources" className="text-muted-foreground hover:text-foreground transition-colors">
-                Resources
-              </a>
-              <a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">
-                Pricing
-              </a>
-            </nav>
+          <div className="flex items-center space-x-2">
+            <img src="/lovable-uploads/logo.svg" alt="Aiitorney" className="w-full h-full object-cover" />
+            <span className="text-xl font-semibold text-foreground">AITTORNEY</span>
           </div>
 
-          <Button variant="default" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">
+              How It Works
+            </a>
+            <a href="#resources" className="text-muted-foreground hover:text-foreground transition-colors">
+              Resources
+            </a>
+            <a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">
+              Pricing
+            </a>
+          </nav>
+
+          {/* Desktop Login Button */}
+          <Button
+            variant="default"
+            size="sm"
+            className="hidden md:flex bg-primary hover:bg-primary/90 text-primary-foreground font-light"
+          >
             Login
           </Button>
+
+          {/* Mobile Navigation */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="sm" className="md:hidden">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <nav className="flex flex-col space-y-6 mt-6">
+                <a
+                  href="#how-it-works"
+                  className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  How It Works
+                </a>
+                <a href="#resources" className="text-lg text-muted-foreground hover:text-foreground transition-colors">
+                  Resources
+                </a>
+                <a href="#pricing" className="text-lg text-muted-foreground hover:text-foreground transition-colors">
+                  Pricing
+                </a>
+                <div className="pt-4 border-t border-border">
+                  <Button
+                    variant="default"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-light"
+                  >
+                    Login
+                  </Button>
+                </div>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

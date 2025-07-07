@@ -1,4 +1,5 @@
 import { CircleDot } from "lucide-react";
+import SectionHeader from "./section-header";
 
 const HowItWorksSection = () => {
   const steps = [
@@ -27,17 +28,14 @@ const HowItWorksSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <p className="text-muted-foreground mb-4">
-            Get investor-ready legal docs in 3 simple steps
-          </p>
-          <h2 className="text-4xl font-bold text-foreground">
-            How it works
-          </h2>
-        </div>
-        
+    <section className="">
+      <div className="">
+        <SectionHeader
+          title="How it works"
+          subtitle="Get investor-ready legal docs in 3 simple steps"
+          position="left"
+        />
+
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-12">
             {steps.map((step, index) => (
@@ -45,19 +43,19 @@ const HowItWorksSection = () => {
                 <div className="mb-6">
                   <CircleDot className="w-12 h-12 text-primary mx-auto mb-4" />
                 </div>
-                
+
                 <h3 className="text-xl font-bold text-foreground mb-2">
                   {step.title}
                 </h3>
-                
+
                 <p className="text-primary font-medium mb-4">
                   {step.subtitle}
                 </p>
-                
+
                 <p className="text-muted-foreground mb-4 leading-relaxed">
                   {step.description}
                 </p>
-                
+
                 {step.bulletPoints && (
                   <div className="space-y-2">
                     {step.bulletPoints.map((point, pointIndex) => (
@@ -67,7 +65,7 @@ const HowItWorksSection = () => {
                     ))}
                   </div>
                 )}
-                
+
                 {index === 2 && (
                   <div className="mt-6">
                     <div className="text-foreground font-semibold mb-2">Output Formats:</div>
@@ -78,7 +76,7 @@ const HowItWorksSection = () => {
                     </div>
                   </div>
                 )}
-                
+
                 {index === 0 && (
                   <div className="mt-6">
                     <div className="text-foreground font-semibold mb-2">Example Topics We Cover:</div>
