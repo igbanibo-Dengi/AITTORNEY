@@ -145,7 +145,7 @@ const HeroSection = () => {
       <div className="absolute inset-0">
         {/* <img src="/placeholder.svg?height=1080&width=1920" alt="Background" className="w-full h-full object-cover" /> */}
         <img
-          src="/lovable-uploads/bg-image.png"
+          src="/lovable-uploads/BG.png"
           alt="Background"
           className="w-full h-full object-cover"
         />
