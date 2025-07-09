@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
+import WaitlistModal from "./waitlist-modal"
 
 const Header = () => {
   return (
@@ -26,13 +27,11 @@ const Header = () => {
           </nav>
 
           {/* Desktop Login Button */}
-          <Button
-            variant="default"
-            size="sm"
-            className="hidden md:flex bg-primary hover:bg-primary/90 text-primary-foreground font-light"
-          >
-            Login
-          </Button>
+          <div className="hidden md:block">
+            <WaitlistModal
+              triggerText="login"
+            />
+          </div>
 
           {/* Mobile Navigation */}
           <Sheet>
@@ -57,12 +56,9 @@ const Header = () => {
                   Pricing
                 </a>
                 <div className="pt-4 border-t border-border">
-                  <Button
-                    variant="default"
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-light"
-                  >
-                    Login
-                  </Button>
+                  <WaitlistModal
+                    triggerText="login"
+                  />
                 </div>
               </nav>
             </SheetContent>

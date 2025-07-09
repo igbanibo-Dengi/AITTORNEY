@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import SectionHeader from "./section-header";
+import WaitlistModal from "./waitlist-modal";
 
 const FeaturesSection = () => {
   return (
@@ -22,7 +23,12 @@ const FeaturesSection = () => {
                 />
               </div>
               <h3 className="text-2xl font-bold text-foreground">Core Features</h3>
-              <Button size="lg" className="w-fit">See Sample Docs</Button>
+              <WaitlistModal
+                triggerText="See Sample Docs"
+                triggerSize="lg"
+              // onSuccess={(data) => console.log("Success!", data)}
+              // onError={(error) => console.log("Error:", error)}
+              />
             </div>
           </div>
           <div className="xl:w-2/3">

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import SectionHeader from "./section-header"
+import WaitlistModal from "./waitlist-modal"
 
 const PricingSection = () => {
   const pricingData = [
@@ -80,12 +81,10 @@ const PricingSection = () => {
           First 200 signups lock in <span className="text-blue-500 font-bold">30% off forever</span> + free compliance audit.
         </h3>
 
-        <Button
-          size="lg"
-          className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-medium rounded-lg"
-        >
-          Get Early Access
-        </Button>
+        <WaitlistModal
+          triggerText="Get Early Access"
+          triggerSize="lg"
+        />
       </div>
     </section>
   )
