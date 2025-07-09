@@ -15,7 +15,7 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#how-it-works" className="text-muted-foreground font-bold hover:text-foreground transition-colors">
               How It Works
             </a>
             {/* <a href="#resources" className="text-muted-foreground hover:text-foreground transition-colors">
@@ -45,16 +45,16 @@ const Header = () => {
               <nav className="flex flex-col space-y-6 mt-6">
                 <a
                   href="#how-it-works"
-                  className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-lg font-bold text-muted-foreground hover:text-foreground transition-colors"
                 >
                   How It Works
                 </a>
-                <a href="#resources" className="text-lg text-muted-foreground hover:text-foreground transition-colors">
+                {/* <a href="#resources" className="text-lg text-muted-foreground hover:text-foreground transition-colors">
                   Resources
                 </a>
                 <a href="#pricing" className="text-lg text-muted-foreground hover:text-foreground transition-colors">
                   Pricing
-                </a>
+                </a> */}
                 <div className="pt-4 border-t border-border">
                   <WaitlistModal
                     triggerText="login"
