@@ -5,19 +5,19 @@ const PricingSection = () => {
   const pricingData = [
     {
       plan: "Pay-Per-Doc",
-      price: "$99-$249 per doc",
+      // price: "$99-$249 per doc",
       perfectFor: "Founders with one-time needs",
       savings: "80% vs law firms",
     },
     {
       plan: "Legal Shield (Subscription)",
-      price: "$179 per month",
+      // price: "$179 per month",
       perfectFor: "Startups with monthly legal needs",
       savings: "Unlimited basic docs + 1 premium review",
     },
     {
       plan: "Human Lawyer Review",
-      price: "$99 per doc",
+      // price: "$99 per doc",
       perfectFor: "Critical contracts (investor docs, etc.)",
       savings: "75% discount",
     },
@@ -37,9 +37,9 @@ const PricingSection = () => {
         <div className="overflow-x-auto -mx-6 px-6">
           <div className="min-w-[800px]">
             {/* Table header */}
-            <div className="grid grid-cols-4 gap-8 pb-6 border-b border-gray-700 mb-8">
+            <div className="grid grid-cols-3 gap-8 pb-6 border-b border-gray-700 mb-8">
               <div className="text-lg font-semibold text-white min-w-[150px]">Plans</div>
-              <div className="text-lg font-semibold text-white min-w-[150px]">Price</div>
+              {/* <div className="text-lg font-semibold text-white min-w-[150px]">Price</div> */}
               <div className="text-lg font-semibold text-white min-w-[200px]">Perfect For</div>
               <div className="text-lg font-semibold text-white min-w-[200px]">Savings</div>
             </div>
@@ -47,9 +47,9 @@ const PricingSection = () => {
             {/* Table rows */}
             <div className="space-y-0">
               {pricingData.map((item, index) => (
-                <div key={index} className="grid grid-cols-4 gap-8 py-6 border-b border-gray-800 last:border-b-0">
+                <div key={index} className="grid grid-cols-3 gap-8 py-6 border-b border-gray-800 last:border-b-0">
                   <div className="text-white font-medium min-w-[150px]">{item.plan}</div>
-                  <div className="text-gray-300 min-w-[150px]">{item.price}</div>
+                  {/* <div className="text-gray-300 min-w-[150px]">{item.price}</div> */}
                   <div className="text-gray-400 min-w-[200px]">{item.perfectFor}</div>
                   <div className="text-gray-400 min-w-[200px]">{item.savings}</div>
                 </div>

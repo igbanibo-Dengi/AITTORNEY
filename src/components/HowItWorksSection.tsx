@@ -1,4 +1,3 @@
-import { Sparkles } from "lucide-react"
 import SectionHeader from "./section-header"
 
 const HowItWorksSection = () => {
@@ -40,7 +39,7 @@ const HowItWorksSection = () => {
   ]
 
   return (
-    <section className="">
+    <section id="how-it-works" className="">
       <SectionHeader
         title="How it works"
         subtitle="Get investor-ready legal docs in 3 simple steps"
